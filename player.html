@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Now Playing</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #1a1a2e, #0f0f1f);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 100vh;
+      padding: 30px 20px;
+    }
+
+    .album-art {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      border: 5px solid #ff4fc1;
+      background-image: url('images/album.jpg');
+      background-size: cover;
+      background-position: center;
+      box-shadow: 0 0 20px rgba(255, 79, 193, 0.4);
+      animation: rotate 8s linear infinite;
+    }
+
+    @keyframes rotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .song-info {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .song-info h2 {
+      margin: 10px 0 5px;
+      font-size: 22px;
+    }
+
+    .song-info p {
+      margin: 0;
+      color: #ccc;
+    }
+
+    .progress {
+      width: 100%;
+      margin: 30px 0 10px;
+    }
+
+    .progress input[type=range] {
+      width: 100%;
+      accent-color: #ff4fc1;
+    }
+
+    .time {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #bbb;
+    }
+
+    .controls {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-around;
+      width: 100%;
+      align-items: center;
+    }
+
+    .controls button {
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .play {
+      background: #ff4fc1;
+      color: white;
+      padding: 12px;
+      border-radius: 50%;
+      font-size: 28px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="album-art"></div>
+
+  <div class="song-info">
+    <h2>Dele Divoneh</h2>
+    <p>Ahllam</p>
+  </div>
+
+  <div class="progress">
+    <input type="range" id="progress" value="0" />
+    <div class="time">
+      <span id="currentTime">00:00</span>
+      <span id="duration">03:40</span>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button onclick="prev()">⏮️</button>
+    <button class="play" onclick="togglePlay()">▶️</button>
+    <button onclick="next()">⏭️</button>
+  </div>
+
+  <audio id="audio" src="songs/dele-divoneh.mp3"></audio>
+
+  <script>
+    const audio = document.getElementById('audio');
+    const playBtn = document.querySelector('.play');
+    const progress = document.getElementById('progress');
+    const currentTimeText = document.getElementById('currentTime');
+    const durationText = document.getElementById('duration');
+
+    audio.onloadedmetadata = () => {
+      durationText.textContent = formatTime(audio.duration);
+      progress.max = Math.floor(audio.duration);
+    }
+
+    function togglePlay() {
+      if (audio.paused) {
+        audio.play();
+        playBtn.textContent = '⏸️';
+      } else {
+        audio.pause();
+        playBtn.textContent = '▶️';
+      }
+    }
+
+    function formatTime(seconds) {
+      const mins = Math.floor(seconds / 60);
+      const secs = Math.floor(seconds % 60);
+      return `${mins < 10 ? '0' : ''}${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    }
+
+    audio.ontimeupdate = () => {
+      progress.value = audio.currentTime;
+      currentTimeText.textContent = formatTime(audio.currentTime);
+    }
+
+    progress.oninput = () => {
+      audio.currentTime = progress.value;
+    }
+
+    function prev() {
+      audio.currentTime = 0;
+    }
+
+    function next() {
+      audio.currentTime = audio.duration;
+    }
+  </script>
+
+</body>
+</html>
