@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Discover - Music App</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #3b006b, #1e0042);
+      color: white;
+    }
+
+    .app-container {
+      max-width: 430px;
+      margin: 0 auto;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow-y: auto;
+    }
+
+    .header {
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .title {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .user-icons {
+      display: flex;
+      overflow-x: auto;
+      padding: 0 20px;
+      gap: 15px;
+    }
+
+    .user-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: #ff55d7;
+      flex-shrink: 0;
+      border: 3px solid #fff;
+      cursor: pointer;
+    }
+
+    .search-bar {
+      background: #2a0052;
+      margin: 20px;
+      padding: 10px 15px;
+      border-radius: 12px;
+      color: #ccc;
+    }
+
+    .section-title {
+      margin: 10px 20px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      padding: 0 20px;
+    }
+
+    .card {
+      background: #8e24aa;
+      border-radius: 12px;
+      padding: 20px;
+      height: 100px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .wide-card {
+      background: #bb3ef2;
+      margin: 20px;
+      border-radius: 12px;
+      padding: 20px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .scroll-cards {
+      display: flex;
+      overflow-x: auto;
+      gap: 10px;
+      padding: 10px 20px 30px;
+    }
+
+    .scroll-cards .card {
+      flex-shrink: 0;
+      width: 120px;
+      height: 100px;
+    }
+
+    .artist-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+      padding: 0 20px;
+    }
+
+    .artist-card {
+      background: #5c007a;
+      border-radius: 12px;
+      text-align: center;
+      padding: 15px;
+      cursor: pointer;
+    }
+
+    .artist-card img {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .bottom-nav {
+      background: #330066;
+      display: flex;
+      justify-content: space-around;
+      padding: 12px 0;
+      border-top: 1px solid #222;
+    }
+
+    .bottom-nav button {
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <div>
+      <div class="header">
+        <div class="title">Discover</div>
+        <div style="width: 30px; height: 30px; background: #fff; border-radius: 50%;"></div>
+      </div>
+
+      <div class="user-icons">
+        <div class="user-icon"></div>
+        <div class="user-icon"></div>
+        <div class="user-icon"></div>
+        <div class="user-icon"></div>
+        <div class="user-icon"></div>
+      </div>
+
+      <div class="search-bar">🔍 Search music</div>
+
+      <div class="section-title">Made for you</div>
+      <div class="cards-grid">
+        <div class="card">Long Ride</div>
+        <div class="card">Love</div>
+      </div>
+
+      <div class="wide-card">🎧 Discover Weekly<br><small>Your weekly mix</small></div>
+
+      <div class="section-title">Today hits</div>
+      <div class="scroll-cards">
+        <div class="card">🔥 Hit 1</div>
+        <div class="card">🎶 Hit 2</div>
+        <div class="card">🎵 Hit 3</div>
+        <div class="card">⭐ Hit 4</div>
+      </div>
+
+      <div class="section-title">Artists</div>
+      <div class="artist-grid">
+        <div class="artist-card" onclick="window.location.href='artist.html'">
+          <img src="images/artist1.jpg" alt="Artist 1" />
+          <div>Arjun Beats</div>
+        </div>
+        <div class="artist-card" onclick="window.location.href='artist.html'">
+          <img src="images/artist2.jpg" alt="Artist 2" />
+          <div>LoFi Girl</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-nav">
+      <button>🏠</button>
+      <button>❤️</button>
+      <button>🔍</button>
+      <button>☰</button>
+    </div>
+  </div>
+</body>
+</html>

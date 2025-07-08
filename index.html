@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome - Music App</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom right, #2a004f, #3f0071);
+      font-family: 'Segoe UI', sans-serif;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      text-align: center;
+      padding: 20px;
+      max-width: 400px;
+    }
+
+    .container img {
+      width: 250px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    h1 {
+      font-size: 24px;
+      margin: 20px 0 10px;
+    }
+
+    h1 span {
+      color: #ff55d7;
+    }
+
+    p {
+      color: #d2b5ff;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 30px;
+      padding: 14px 30px;
+      background: #b900ff;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #ff00e0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <img src="images/headphones.png" alt="Headphones" />
+    <h1>enjoy your <span>music</span>,<br>enjoy your <span>life</span></h1>
+    <p>listen to your favorite music for free, anywhere.</p>
+    <button onclick="window.location.href='discover.html'">GET STARTED</button>
+  </div>
+</body>
+</html>
